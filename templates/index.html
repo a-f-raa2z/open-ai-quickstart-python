@@ -3,19 +3,20 @@
   <title>OpenAI Quickstart</title>
   <link
     rel="shortcut icon"
-    href="{{ url_for('static', filename='dog.png') }}"
+    href="{{ url_for('static', filename='buya.png') }}"
   />
   <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}" />
 </head>
 
 <body>
-  <img src="{{ url_for('static', filename='dog.png') }}" class="icon" />
-  <h3>Name my pet</h3>
+  <img src="{{ url_for('static', filename='buya.png') }}" class="icon" />
+  <h3>Not-So-Super Classifier</h3>
   <form action="/" method="post">
-    <input type="text" name="animal" placeholder="Enter an animal" required />
-    <input type="submit" value="Generate names" />
+    <input type="text" name="diary" placeholder="What's on your mind" required />
+    <input type="submit" value="Show Tags" />
   </form>
   {% if result %}
   <div class="result">{{ result }}</div>
+  <h3>end of diary</h3>
   {% endif %}
 </body>

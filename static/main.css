@@ -27,7 +27,7 @@ body {
   padding-top: 60px;
 }
 .icon {
-  width: 34px;
+  width: 100px;
 }
 h3 {
   font-size: 32px;
@@ -39,11 +39,11 @@ h3 {
 form {
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 400px;
 }
 input[type="text"] {
   padding: 12px 16px;
-  border: 1px solid #10a37f;
+  border: 1px solid #000000;
   border-radius: 4px;
   margin-bottom: 24px;
 }
@@ -54,13 +54,14 @@ input[type="text"] {
 input[type="submit"] {
   padding: 12px 0;
   color: #fff;
-  background-color: #10a37f;
+  background-color: #000000;
   border: none;
   border-radius: 4px;
   text-align: center;
   cursor: pointer;
 }
 .result {
+  font-size: 20px;
   font-weight: bold;
   margin-top: 40px;
 }

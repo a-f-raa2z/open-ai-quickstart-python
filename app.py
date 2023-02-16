@@ -9,27 +9,40 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/", methods=("GET", "POST"))
 def index():
+    global diary
     if request.method == "POST":
-        animal = request.form["animal"]
+        diary = request.form["diary"]
         response = openai.Completion.create(
             model="text-davinci-003",
-            prompt=generate_prompt(animal),
+            prompt=generate_prompt(diary),
             temperature=0.6,
         )
         return redirect(url_for("index", result=response.choices[0].text))
 
-    result = request.args.get("result")
+    result = diary + " : "+str(request.args.get("result"))
     return render_template("index.html", result=result)
 
 
-def generate_prompt(animal):
-    return """Suggest three names for an animal that is a superhero.
-
-Animal: Cat
-Names: Captain Sharpclaw, Agent Fluffball, The Incredible Feline
-Animal: Dog
-Names: Ruff the Protector, Wonder Canine, Sir Barks-a-Lot
-Animal: {}
-Names:""".format(
-        animal.capitalize()
+def generate_prompt(diary):
+    return """The following is a list of diaries and the tags that they are associated with
+Diary: I love zoo!
+Tags: Mood_Positive
+Diary: Sadd
+Tags: Mood_Negative
+Diary: Milk tea is good
+Tags: Food_beverage
+Diary: Zeyu ate basque cake
+Tags: Food_Dessert
+Diary:I watched Addams today.
+Tags: Activity_Movie
+Diary:I went to westfield.
+Tags: Activity_Shopping
+Diary:I am visiting New Yorkk .
+Tags: Activity_Travel
+Diary: We had good brunch in the city.
+Tags: Food_Meal
+Diary: {}
+Tags: 
+""".format(
+        diary.capitalize()
     )
