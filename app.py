@@ -9,6 +9,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route("/", methods=("GET", "POST"))
 def index():
+    # this is a test commit
     global diary
     if request.method == "POST":
         diary = request.form["diary"]
